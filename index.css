@@ -1,0 +1,57 @@
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: 'Vazirmatn', sans-serif;
+  color: #172554;
+  background: #f6f7ff;
+}
+* { box-sizing: border-box; }
+html { direction: rtl; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 85% -10%, rgba(124, 58, 237, .13), transparent 28rem),
+    radial-gradient(circle at -10% 30%, rgba(14, 165, 233, .10), transparent 25rem),
+    #f6f7ff;
+}
+.dark body { background: #080b1b; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+::selection { background: #c4b5fd; color: #2e1065; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes glow { 0%, 100% { box-shadow: 0 16px 38px rgba(79, 70, 229, .18); } 50% { box-shadow: 0 20px 44px rgba(124, 58, 237, .30); } }
+.animate-rise { animation: rise .42s ease-out both; }
+.safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+
+[data-testid='brand-link'] { align-items: center; font-size: 0; }
+[data-testid='brand-link']::after {
+  content: 'پیام ناشناس A.S\A امین مسیج';
+  white-space: pre;
+  font-size: .72rem;
+  line-height: 1.35;
+  font-weight: 900;
+  color: inherit;
+}
+footer p { font-size: 0; }
+footer p::after {
+  content: 'پیام ناشناس A.S\A امین مسیج';
+  white-space: pre;
+  font-size: .78rem;
+  line-height: 1.5;
+  font-weight: 900;
+  color: inherit;
+}
+
+/* Purple and electric-blue highlights keep the product lively without reducing readability. */
+.bg-indigo-600 { background-image: linear-gradient(135deg, #6d28d9, #2563eb); }
+.hover\:bg-indigo-700:hover { background-image: linear-gradient(135deg, #5b21b6, #1d4ed8); }
+.shadow-lg.shadow-indigo-100 { box-shadow: 0 16px 38px rgba(79, 70, 229, .18); }
+[data-testid='create-link'], [data-testid='auth-submit'], [data-testid='send-anonymous-message'], [data-testid='account-copy-link'] { animation: glow 3.2s ease-in-out infinite; }
+textarea:focus, input:focus { box-shadow: 0 0 0 4px rgba(124, 58, 237, .12); }
+@media (max-width: 640px) {
+  body { background-size: 23rem 23rem, 20rem 20rem, auto; }
+  [data-testid='brand-link']::after { font-size: .66rem; }
+}
